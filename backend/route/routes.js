@@ -53,10 +53,10 @@ router.post(
   processPayments,
 );
 router.get("/payments", getPayment);
-router.get("/notification/:userId", getNotification);
+
 router.put("/notification/:id/mark-as-read", readNotification);
 router.post("/createSemesterFee", createSemesterFee);
-router.get("/fees/:semester", feeStructure);
+router.post("/fees", feeStructure);
 router.put("/updateFeeStructure/:id", updateFeeStructure);
 router.delete("/deleteFeeStructure/:id", deleteFeeStructure);
 module.exports = router;

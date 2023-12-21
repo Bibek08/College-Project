@@ -68,7 +68,7 @@ const PaymentForm = () => {
     formDataToUpload.append("guardianContact", guardianContact);
 
     try {
-      const response = axios.post(`/processPayment`, formDataToUpload);
+      const response = await axios.post(`/processPayment`, formDataToUpload);
       console.log("Upload response", response.data);
 
       // show sweet alert on successful upload
@@ -95,11 +95,11 @@ const PaymentForm = () => {
       });
       setPreviewImage(null);
     } catch (error) {
-      // console.error("entry creation error", error);
+      console.error("entry creation error", error);
       Swal.fire({
         icon: "error",
-        title: "Error",
-        text: "There was an error while payment",
+        title: "Payment Unsuccessful",
+        text: "There was an  while payment",
       });
     }
   };

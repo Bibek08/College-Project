@@ -6,7 +6,7 @@ const DynamicRow = ({ name, amount, paymentDate }) => {
       <div className="box">
         <div className="name">{name}</div>
         <div className="amount">
-          <div>{amount}</div>
+          <div> Rs.{amount}</div>
           <div>{paymentDate}</div>
         </div>{" "}
         <div>

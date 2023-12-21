@@ -7,7 +7,6 @@ const admin = require("../models/adminSchema");
 const payment = require("../models/payment");
 const SemesterFee = require("../models/semesterFeeStructure");
 // const io = require("socket.io");
-const Notification = require("../models/NotificationSchema");
 
 //  @desc   Auth user & get token
 //  @route  POST /auth
@@ -297,20 +296,16 @@ const processPayments = asyncHandler(async (req, res) => {
     });
 
     // saving the payment instance
-    const payment = await newPayment.save();
-
-    const notificationMessage = `The payment of ${payment.amount} for the ${payment.semester} semester has been successfully processed by ${payment.name} `;
-    const notification = await Notification.create({
-      userId: payment.userId,
-      accountantId: req.body.accountantId,
-      paymentId: payment._id,
-      message: notificationMessage,
-    });
+    const savedPayment = await newPayment.save();
+    if (!savedPayment) {
+      res
+        .status(500)
+        .json({ error: "Payment unsucces", details: error.message });
+    }
     return res.status(201).json({
       message: "Payment processed successfully",
       success: true,
       payment,
-      notification,
     });
   } catch (error) {
     return res
@@ -453,6 +448,9 @@ const feeStructure = asyncHandler(async (req, res) => {
     const { semester } = req.body;
     console.log(req.body);
     const fee = await SemesterFee.find({ semester });
+    if (!fee) {
+      return res.status(404).json({ message: "Fee structure not found " });
+    }
     console.log(fee);
     return res.status(200).json({ fee });
   } catch (error) {
@@ -482,7 +480,7 @@ const updateFeeStructure = asyncHandler(async (req, res) => {
     } = req.body;
     console.log(req.body);
     const update = await SemesterFee.findByIdAndUpdate(
-      { _id },
+      { _id: req.params.id },
       {
         semester,
         admissionFee,
@@ -494,11 +492,16 @@ const updateFeeStructure = asyncHandler(async (req, res) => {
         labFee,
         identityCardFee,
       },
+      { new: true }, // Return the updated docment
     );
-    console.log(update);
-    return res
+
+    if (!update) {
+      return res.status(404).json({ message: "Fee Structure not found" });
+    }
+    res
       .status(200)
       .json({ message: "fee structured updated successfully", update });
+    console.log(update);
   } catch (error) {
     console.error(error);
     return res

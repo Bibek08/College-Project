@@ -54,7 +54,6 @@ const CreateFeeStr = () => {
             <Form.Label>Semester</Form.Label>
             <Form.Control
               name="semester"
-              placeholder="Semester"
               type="number"
               value={feeStructure.semester}
               onChange={handleChange}
@@ -64,7 +63,6 @@ const CreateFeeStr = () => {
             <Form.Label>Admission Fee</Form.Label>
             <Form.Control
               name="admissionFee"
-              placeholder="Admission Fee"
               type="text"
               value={feeStructure.admissionFee}
               onChange={handleChange}
@@ -76,7 +74,6 @@ const CreateFeeStr = () => {
             <Form.Label>Tution Fee</Form.Label>
             <Form.Control
               name="tutionFee"
-              placeholder="Tution Fee"
               type="text"
               value={feeStructure.tutionFee}
               onChange={handleChange}
@@ -86,7 +83,6 @@ const CreateFeeStr = () => {
             <Form.Label>Library Fee</Form.Label>
             <Form.Control
               name="libraryFee"
-              placeholder="Library Fee"
               type="text"
               value={feeStructure.libraryFee}
               onChange={handleChange}
@@ -98,7 +94,6 @@ const CreateFeeStr = () => {
             <Form.Label>Internal Exam Fee</Form.Label>
             <Form.Control
               name="internalExamFee"
-              placeholder="Internal Exam Fee"
               type="text"
               value={feeStructure.internalExamFee}
               onChange={handleChange}
@@ -108,7 +103,6 @@ const CreateFeeStr = () => {
             <Form.Label>Board Exam Fee</Form.Label>
             <Form.Control
               name="boardExamFee"
-              placeholder="Board Exam Fee"
               type="text"
               value={feeStructure.boardExamFee}
               onChange={handleChange}
@@ -120,7 +114,6 @@ const CreateFeeStr = () => {
             <Form.Label>Infrastructure Development Fee</Form.Label>
             <Form.Control
               name="infrastructureDevelopmentFee"
-              placeholder="Infrastructure Development Fee"
               type="text"
               value={feeStructure.infrastructureDevelopmentFee}
               onChange={handleChange}
@@ -130,7 +123,6 @@ const CreateFeeStr = () => {
             <Form.Label>Lab Fee</Form.Label>
             <Form.Control
               name="labFee"
-              placeholder="Lab Fee"
               type="text"
               value={feeStructure.labFee}
               onChange={handleChange}
@@ -142,7 +134,6 @@ const CreateFeeStr = () => {
             <Form.Label>Identity Card Fee</Form.Label>
             <Form.Control
               name="identityCardFee"
-              placeholder="Identity Card Fee"
               type="text"
               value={feeStructure.identityCardFee}
               onChange={handleChange}

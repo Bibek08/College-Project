@@ -6,35 +6,35 @@ const semesterFeeSchema = new mongoose.Schema({
     required: true,
   },
   admissionFee: {
-    type: Number,
+    type: String,
     required: true,
   },
   tutionFee: {
-    type: Number,
+    type: String,
     required: true,
   },
   libraryFee: {
-    type: Number,
+    type: String,
     required: true,
   },
   internalExamFee: {
-    type: Number,
+    type: String,
     required: true,
   },
   boardExamFee: {
-    type: Number,
+    type: String,
     required: true,
   },
   infrastructureDevelopmentFee: {
-    type: Number,
+    type: String,
     required: true,
   },
   labFee: {
-    type: Number,
+    type: String,
     required: true,
   },
   identityCardFee: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
