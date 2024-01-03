@@ -146,11 +146,12 @@ function Student() {
               style={{ backgroundColor: "blue", border: "1px solid black" }}
             >
               <th>Name</th>
-              {/* <th>Gender</th> */}
               <th>Roll</th>
               <th>Email</th>
               <th>Guardian Name</th>
               <th>Contact</th>
+              <th>Gender</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -162,6 +163,7 @@ function Student() {
                 <td>{student.email} </td>
                 <td>{student.guardianName} </td>
                 <td>{student.contact} </td>
+                <td>{student.gender} </td>
                 <td>
                   <Button
                     variant="outline-success"
@@ -196,13 +198,6 @@ function Student() {
                   value={updatedStudent.name ? updatedStudent.name : ""}
                   onChange={handleChange}
                 />
-                {/* <Form.Control
-                name="Gender"
-                placeholder="Gender"
-                type="text"
-                value={updatedStudent.Gender ? updatedStudent.Gender : ""}
-                onChange={handleChange}
-              /> */}
 
                 <Form.Control
                   name="roll"
@@ -235,6 +230,14 @@ function Student() {
                   name="contact"
                   placeholder="Contact"
                   type="number"
+                  value={updatedStudent.contact ? updatedStudent.contact : ""}
+                  onChange={handleChange}
+                />
+
+                <Form.Control
+                  name="gender"
+                  placeholder="Gender"
+                  type="text"
                   value={updatedStudent.contact ? updatedStudent.contact : ""}
                   onChange={handleChange}
                 />

@@ -14,8 +14,9 @@ import CreateStudent from "./pages/createStudent/createStudent";
 import CreateAccountant from "./pages/createAccountant/createAccountant";
 import Home from "./pages/homePage/Home";
 import Statements from "./pages/statements/statements";
-import SeeDetails from "./pages/seeDetails/seeDetails";
+// import SeeDetails from "./pages/seeDetails/seeDetails";
 import CreateFeeStructure from "./pages/createFeeStructure/createFeeStr";
+import StatementDetails from "./pages/statements/StatementDetails";
 function App() {
   return (
     <Router>
@@ -104,10 +105,10 @@ function App() {
           }
         />
         <Route
-          path="/seeDetails"
+          path="/statements/statementDetails/:id"
           element={
             <Sidebar>
-              <SeeDetails />
+              <StatementDetails />
             </Sidebar>
           }
         />

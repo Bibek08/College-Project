@@ -28,7 +28,7 @@ const Sidebar = ({ children }) => {
       path: "/students",
       name: "Students",
       icon: <FaIcons.FaUserGraduate />,
-      allowedRoles: ["Admin"],
+      allowedRoles: ["Admin", "Accountant"],
     },
     {
       path: "/accountant",

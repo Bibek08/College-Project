@@ -7,7 +7,7 @@ import DynamicRow from "../../components/dynamic row/dynamicRow";
 
 function Statements() {
   const [payments, setPayments] = useState([]);
-  //   const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -20,6 +20,11 @@ function Statements() {
         console.log(err);
       });
   }, []);
+
+  // const handleStatementClick = (id) => {
+  //   navigate(`statements/statementDetail/${id}`);
+  // };
+
   const convertToNepalTime = (utcTimestamp) => {
     const utcDate = new Date(utcTimestamp);
     const options = { timeZone: "Asia/Kathmandu", timeZoneName: "short" };
@@ -34,6 +39,7 @@ function Statements() {
           {payments.map((payment) => (
             <DynamicRow
               key={payment._id}
+              id={payment._id} //! Make sure that id is extracted to pas as url parameter
               className="col-12"
               name={payment.name}
               amount={payment.amount}
@@ -47,35 +53,3 @@ function Statements() {
 }
 
 export default Statements;
-
-// import React from "react";
-
-// const Statements = () => {
-//   return (
-//     <div>
-//       <Header />
-
-//  <Table>
-//         <thead>
-//           <tr>
-//             <tbody>
-//               {payments.map((payment) => (
-//                 <tr key={payment._id} className="text-center">
-//                   <td>{payment.name}</td>
-//                   <td>{payment.amount}</td>
-//                   <td>{payment.paymentDate}</td>
-//                   <td>
-//                     <a href="/view">See details</a>
-//                   </td>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </tr>
-//         </thead>
-//       </Table>
-
-//     </div>
-//   );
-// };
-
-// export default Statements;

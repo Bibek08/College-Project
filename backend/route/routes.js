@@ -16,6 +16,7 @@ const {
   deleteAccountant,
   processPayments,
   getPayment,
+  getByPaymentId,
   getNotification,
   readNotification,
   createSemesterFee,
@@ -46,13 +47,9 @@ router
   .put(protect, updateAccountant);
 router.delete("/deleteAccountant/:id", deleteAccountant);
 router.put("/updateAccountant/:id", updateAccountant);
-router.post(
-  "/processPayment",
-  uploadMidlleware.single("photo"),
-
-  processPayments,
-);
+router.post("/processPayment", uploadMidlleware, processPayments);
 router.get("/payments", getPayment);
+router.get("/payments/:id", getByPaymentId);
 
 router.put("/notification/:id/mark-as-read", readNotification);
 router.post("/createSemesterFee", createSemesterFee);

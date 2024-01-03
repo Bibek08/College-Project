@@ -21,6 +21,7 @@ function CreateStudent() {
   });
 
   const handleChange = (e) => {
+    console.log(e);
     const { name, value } = e.target;
 
     //change the default post value to new input value using prev hook
@@ -62,13 +63,18 @@ function CreateStudent() {
             value={post.name}
             onChange={handleChange}
           />
-          {/* <Form.Control
-            name="Gender"
+          <label>Gender</label>
+          <Form.Control
+            name="gender"
             placeholder="Gender"
-            type="text"
-            value={post.Gender}
+            as="select"
+            value={post.gender}
             onChange={handleChange}
-          /> */}
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </Form.Control>
           <label>Roll Number</label>
           <Form.Control
             name="roll"

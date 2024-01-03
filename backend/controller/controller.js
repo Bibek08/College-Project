@@ -1,4 +1,6 @@
 const asyncHandler = require("express-async-handler");
+const path = require("path");
+const fs = require("fs").promises;
 const User = require("../models/userSchema");
 const Admin = require("../models/adminSchema");
 const Accountant = require("../models/accountantSchema");
@@ -279,7 +281,7 @@ const processPayments = asyncHandler(async (req, res) => {
     email,
     guardianContact,
   } = req.body;
-  const photo = req.file.filename;
+  const base64Image = req.file.base64Image;
 
   try {
     // creating new instance of payment model
@@ -291,7 +293,7 @@ const processPayments = asyncHandler(async (req, res) => {
       amount,
       paymentDate,
       email,
-      photo,
+      photo: base64Image,
       guardianContact,
     });
 
@@ -302,10 +304,18 @@ const processPayments = asyncHandler(async (req, res) => {
         .status(500)
         .json({ error: "Payment unsucces", details: error.message });
     }
+
+    // //? Read the image file as a bufer
+    // const imagePath = path.join(__dirname, "uploads", photo);
+    // const imageBuffer = await fs.readFile(imagePath);
+
+    // //? Convert the buffer to a Base64 encoded string
+    // const base64Image = imageBuffer.toString("base64");
+
     return res.status(201).json({
       message: "Payment processed successfully",
       success: true,
-      payment,
+      payment: savedPayment,
     });
   } catch (error) {
     return res
@@ -321,6 +331,32 @@ const getPayment = asyncHandler(async (req, res) => {
   try {
     const paid = await payment.find();
     res.json(paid);
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ error: "An error occured while retrieving payments " });
+  }
+});
+
+// @desc    Get payments based on the id
+// @route   GET /statements
+// @access  Private
+const getByPaymentId = asyncHandler(async (req, res) => {
+  try {
+    const pay = await payment.findById(req.params.id);
+
+    if (!pay) {
+      return res.status(500).json("Payment not found ");
+    }
+
+    const photoBased64 = pay.photo.toString("base64");
+    res.json({
+      payment: {
+        ...JSON.parse(JSON.stringify(pay)),
+        photo: photoBased64,
+      },
+    });
   } catch (err) {
     console.log(err);
     res
@@ -546,6 +582,7 @@ module.exports = {
   deleteAccountant,
   processPayments,
   getPayment,
+  getByPaymentId,
   getNotification,
   readNotification,
   createSemesterFee,

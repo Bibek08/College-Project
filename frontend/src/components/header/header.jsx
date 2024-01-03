@@ -14,6 +14,7 @@ const Header = () => {
     "/payment": "Payment",
     "/feeStructure": "Fee Structure ",
     "/statements": "Statements",
+    "/statements/seeDetails": "Statements",
     "/ledger": "Ledger",
     "/logout": "Logout",
     "/feeStructure/CreateFee": "Create Fee Structure",

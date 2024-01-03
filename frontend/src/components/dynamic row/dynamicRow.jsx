@@ -1,6 +1,7 @@
 import "./dynamicRow.css";
+import { Link } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
-const DynamicRow = ({ name, amount, paymentDate }) => {
+const DynamicRow = ({ id, name, amount, paymentDate }) => {
   return (
     <div className="row">
       <div className="box">
@@ -10,10 +11,13 @@ const DynamicRow = ({ name, amount, paymentDate }) => {
           <div>{paymentDate}</div>
         </div>{" "}
         <div>
-          <a href="/seeDetails" className="see-details">
+          <Link
+            to={`/statements/statementDetails/${id}`}
+            className="see-details"
+          >
             {" "}
             See Details
-          </a>
+          </Link>
         </div>
       </div>{" "}
     </div>
