@@ -56,10 +56,10 @@ const Sidebar = ({ children }) => {
     },
 
     {
-      path: "/ledger",
-      name: "Ledger",
+      path: "/invoice",
+      name: "Invoice",
       icon: <IoIcons.IoMdNotifications />,
-      allowedRoles: ["Admin", "Accountant", "User"],
+      allowedRoles: ["Accountant", "User"],
     },
     {
       path: "/logout",

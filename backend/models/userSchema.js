@@ -10,6 +10,10 @@ const userSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    semester: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
@@ -28,7 +32,7 @@ const userSchema = mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: ["Male", "Female", "Other"],
+      enum: ["Male", "Female"],
       required: true,
     },
     CreatedAt: {
@@ -40,7 +44,7 @@ const userSchema = mongoose.Schema(
       default: "student",
     },
     status: {
-      type: Boolean,
+      type: String,
       default: "pending",
     },
   },

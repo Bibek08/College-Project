@@ -1,5 +1,6 @@
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Row, FormGroup, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/header/header";
 // import { MDBFile } from "mdb-react-ui-kit";
 
 import { useState } from "react";
@@ -13,6 +14,7 @@ function CreateStudent() {
   const [post, setPost] = useState({
     name: "",
     gender: "",
+    semester: "",
     roll: "",
     email: "",
     guardianName: "",
@@ -50,87 +52,124 @@ function CreateStudent() {
 
   return (
     <div className="formContainer ">
-      <h2 className="heading">Create Student </h2>
+      <Header />
+      <h1>Fill this form</h1>
       <Form className="studentForm">
-        <Form.Group>
-          <h1>Fill this form</h1>
-
-          <label>Student Name</label>
-          <Form.Control
-            name="name"
-            placeholder="Name of Student"
-            type="text"
-            value={post.name}
-            onChange={handleChange}
-          />
-          <label>Gender</label>
-          <Form.Control
-            name="gender"
-            placeholder="Gender"
-            as="select"
-            value={post.gender}
-            onChange={handleChange}
-          >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </Form.Control>
-          <label>Roll Number</label>
-          <Form.Control
-            name="roll"
-            placeholder="Roll number"
-            type="number"
-            value={post.roll}
-            onChange={handleChange}
-          />
-          <label>Email ID</label>
-          <Form.Control
-            name="email"
-            placeholder="Email"
-            type="email"
-            value={post.email}
-            onChange={handleChange}
-          />
-          <label>Guardian Name</label>
-          <Form.Control
-            name="guardianName"
-            placeholder="Guardian Name"
-            value={post.guardianName}
-            onChange={handleChange}
-          />
-          <label>Contact</label>
-          <Form.Control
-            name="contact"
-            placeholder="Contact"
-            type="number"
-            value={post.contact}
-            onChange={handleChange}
-          />
-          <label>Password</label>
-          <Form.Control
-            name="password"
-            placeholder="Password"
-            type="password"
-            value={post.password}
-            onChange={handleChange}
-          />
-
-          <Button
-            className="submitBtn"
-            variant="outline-primary"
-            onClick={handleClick}
-          >
-            Submit
-          </Button>
-          <Button
-            style={{ marginLeft: "1rem" }}
-            className="submitBtn"
-            variant="outline-dark"
-            onClick={() => navigate("/Students")}
-          >
-            Manage Student
-          </Button>
-        </Form.Group>
+        <Row>
+          <FormGroup as={Col} md="6">
+            {" "}
+            <label>Student Name</label>
+            <Form.Control
+              name="name"
+              placeholder="Name of Student"
+              type="text"
+              value={post.name}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup as={Col} md="6">
+            <label>Gender</label>
+            <Form.Control
+              name="gender"
+              placeholder="Gender"
+              as="select"
+              value={post.gender}
+              onChange={handleChange}
+              type="text"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </Form.Control>
+          </FormGroup>
+        </Row>
+        <Row>
+          {" "}
+          <FormGroup as={Col} md="6">
+            {" "}
+            <label>Roll Number</label>
+            <Form.Control
+              name="roll"
+              placeholder="Roll number"
+              type="number"
+              value={post.roll}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup as={Col} md="6">
+            <label>Semester</label>
+            <Form.Control
+              name="semester"
+              placeholder="Semester"
+              type="text"
+              value={post.semester}
+              onChange={handleChange}
+            />
+          </FormGroup>
+        </Row>
+        <Row>
+          <FormGroup as={Col} md="6">
+            <label>Guardian Name</label>
+            <Form.Control
+              name="guardianName"
+              placeholder="Guardian Name"
+              value={post.guardianName}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup as={Col} md="6">
+            <label>Contact</label>
+            <Form.Control
+              name="contact"
+              placeholder="Contact"
+              type="number"
+              value={post.contact}
+              onChange={handleChange}
+            />
+          </FormGroup>
+        </Row>
+        <Row>
+          <FormGroup as={Col} md="6">
+            <label>Email ID</label>
+            <Form.Control
+              name="email"
+              placeholder="Email"
+              type="email"
+              value={post.email}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup as={Col} md="6">
+            <label>Password</label>
+            <Form.Control
+              name="password"
+              placeholder="Password"
+              type="password"
+              value={post.password}
+              onChange={handleChange}
+            />
+          </FormGroup>
+        </Row>
+        <Row>
+          {" "}
+          <Form.Group>
+            <Button
+              className="submitBtn"
+              variant="outline-primary"
+              onClick={handleClick}
+            >
+              Submit
+            </Button>
+            <Button
+              style={{ marginLeft: "1rem" }}
+              className="submitBtn"
+              variant="outline-dark"
+              onClick={() => navigate("/Students")}
+            >
+              Manage Student
+            </Button>
+          </Form.Group>
+        </Row>
       </Form>
     </div>
   );

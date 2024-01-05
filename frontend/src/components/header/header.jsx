@@ -10,12 +10,13 @@ const Header = () => {
   const pathToBrandMap = {
     "/dashboard": "Dashboard",
     "/students": "Students",
+    "/CreateStudent": "Create Student",
     "/account": "Accountant",
     "/payment": "Payment",
     "/feeStructure": "Fee Structure ",
     "/statements": "Statements",
     "/statements/seeDetails": "Statements",
-    "/ledger": "Ledger",
+    "/invoice": "Invoice",
     "/logout": "Logout",
     "/feeStructure/CreateFee": "Create Fee Structure",
   };

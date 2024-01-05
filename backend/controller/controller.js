@@ -78,8 +78,17 @@ const authUser = asyncHandler(async (req, res) => {
 // @access  Private
 const registerStudent = asyncHandler(async (req, res) => {
   try {
-    const { name, email, password, roll, guardianName, contact, CreatedAt } =
-      req.body;
+    const {
+      name,
+      email,
+      gender,
+      semester,
+      password,
+      roll,
+      guardianName,
+      contact,
+      CreatedAt,
+    } = req.body;
 
     //  Check either student exists or not
     const existingStudent = await User.findOne({ email });
@@ -92,6 +101,8 @@ const registerStudent = asyncHandler(async (req, res) => {
       name,
       roll,
       email,
+      gender,
+      semester,
       guardianName,
       contact,
       password,
@@ -284,7 +295,7 @@ const processPayments = asyncHandler(async (req, res) => {
   const base64Image = req.file.base64Image;
 
   try {
-    // creating new instance of payment model
+    // creating a new instance of the payment model
     const newPayment = new payment({
       name,
       address,
@@ -297,26 +308,26 @@ const processPayments = asyncHandler(async (req, res) => {
       guardianContact,
     });
 
-    // saving the payment instance
-    const savedPayment = await newPayment.save();
-    if (!savedPayment) {
-      res
-        .status(500)
-        .json({ error: "Payment unsucces", details: error.message });
+    // find the corresponding user and update its status to paid
+    const user = await User.findOne({ email });
+
+    if (user) {
+      // If the user is found, update their status to paid
+      user.status = "paid";
+      await user.save();
+
+      // Save the payment after updating the user status
+      const savedPayment = await newPayment.save();
+
+      return res.status(201).json({
+        message: "Payment processed successfully",
+        success: true,
+        payment: savedPayment,
+      });
+    } else {
+      // If the user is not found, do not save the payment
+      return res.status(404).json({ error: "User not found" });
     }
-
-    // //? Read the image file as a bufer
-    // const imagePath = path.join(__dirname, "uploads", photo);
-    // const imageBuffer = await fs.readFile(imagePath);
-
-    // //? Convert the buffer to a Base64 encoded string
-    // const base64Image = imageBuffer.toString("base64");
-
-    return res.status(201).json({
-      message: "Payment processed successfully",
-      success: true,
-      payment: savedPayment,
-    });
   } catch (error) {
     return res
       .status(500)

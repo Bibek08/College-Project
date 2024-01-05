@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import admin from "../assets/admin.png";
 import "../../pages/createStudent/createStudent";
+import Header from "../../components/header/header";
 
 function Student() {
   // const Students = () => {
@@ -68,69 +69,8 @@ function Student() {
 
   return (
     <>
-      {/* <div className="top-nav">
-        Good <span>Morning</span>
-      </div>
-      <div className="container-nav">
-        <div className="row">
-          <div className="profiletoptext col md-4">Students</div>
-          <div className="col md-4 d-felx justify-content-center align-item-center">
-            <input
-              type="text"
-              placeholder="search here"
-              className="searchbox"
-            />
-          </div>
-          <div className="col md-4 offset-md-7">
-            <div className="imgrole">
-              <img
-                src={admin}
-                alt="admin"
-                style={{ width: "50px", height: "50px" }}
-              />
-              <div>
-                <h6>Bhuwan Darai</h6>
-                <p>Admin</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div>
-        {/* <div
-          className="container d-flex justify-content-center"
-          style={{ marginTop: "20px" }}
-        >
-          <div className="row ">
-            <div className="col-md-4 d-flex justify-content-around">
-              <button
-                className="p-4 rounded fs-4 text-white "
-                style={{ backgroundColor: "#14A888", marginRight: "30px" }}
-              >
-                Total Students
-              </button>
-            </div>
-            <div className="col-md-4 d-flex justify-content-around">
-              <button
-                className="p-4 rounded fs-4 text-white "
-                style={{ backgroundColor: "#0091E6" }}
-              >
-                Boy Students
-              </button>
-            </div>
-            <div className="col-md-4 d-flex justify-content-around">
-              <button
-                className="p-4 rounded fs-4 text-white "
-                style={{ backgroundColor: "#9768D9" }}
-              >
-                Girl Students
-              </button>
-            </div>
-          </div>
-        </div> */}
-        <div style={{ marginTop: "0px" }}>
-          <h3 style={{ borderBottom: "3px solid black" }}>Student List</h3>
-        </div>
+        <Header />
         <div
           className="d-flex justify-content-end align-item-end"
           style={{ marginTop: "50px" }}
@@ -145,8 +85,9 @@ function Student() {
               className="text-center"
               style={{ backgroundColor: "blue", border: "1px solid black" }}
             >
-              <th>Name</th>
               <th>Roll</th>
+              <th>Semester</th>
+              <th>Name</th>
               <th>Email</th>
               <th>Guardian Name</th>
               <th>Contact</th>
@@ -158,12 +99,14 @@ function Student() {
           <tbody>
             {student.map((student) => (
               <tr key={student._id} className="text-center">
-                <td>{student.name} </td>
                 <td>{student.roll} </td>
+                <td>{student.semester} </td>
+                <td>{student.name} </td>
                 <td>{student.email} </td>
                 <td>{student.guardianName} </td>
                 <td>{student.contact} </td>
                 <td>{student.gender} </td>
+                <td>{student.status} </td>
                 <td>
                   <Button
                     variant="outline-success"

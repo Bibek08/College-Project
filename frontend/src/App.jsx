@@ -5,7 +5,6 @@ import "./App.css";
 import Dashboard from "./pages/dashboard/dashboard";
 import Students from "./pages/studentsPage/student";
 import Accountant from "./pages/accountant/accountant";
-import Ledger from "./pages/ledgerPage/ledger";
 import Logout from "./pages/logoutPage/logout";
 import FeeStructure from "./pages/feeStructure/feeStructure";
 import Login from "./pages/loginPage/Login";
@@ -17,6 +16,7 @@ import Statements from "./pages/statements/statements";
 // import SeeDetails from "./pages/seeDetails/seeDetails";
 import CreateFeeStructure from "./pages/createFeeStructure/createFeeStr";
 import StatementDetails from "./pages/statements/StatementDetails";
+import Invoice from "./pages/invoicePage/invoice";
 function App() {
   return (
     <Router>
@@ -81,10 +81,10 @@ function App() {
           }
         />
         <Route
-          path="/ledger"
+          path="/invoice"
           element={
             <Sidebar>
-              <Ledger />
+              <Invoice />
             </Sidebar>
           }
         />
