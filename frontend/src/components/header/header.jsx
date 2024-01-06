@@ -1,28 +1,28 @@
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import * as BsIcons from "react-icons/bs";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
+  const userRole = "admin"; // Replace with the actual role of the user
 
   // object for path to brand mappings
   const pathToBrandMap = {
     "/dashboard": "Dashboard",
-    "/students": "Students",
-    "/CreateStudent": "Create Student",
-    "/account": "Accountant",
+    "/students": "Students List",
+    "/accountant": "Accountant",
     "/payment": "Payment",
     "/feeStructure": "Fee Structure ",
     "/statements": "Statements",
-    "/statements/seeDetails": "Statements",
-    "/invoice": "Invoice",
+    "/statements/seeDetails/statementDetails": "Statements",
+    "/ledger": "Ledger",
+    "/Profile": "Profile",
     "/logout": "Logout",
     "/feeStructure/CreateFee": "Create Fee Structure",
   };
 
-  //    now extract the dynamic value from the pathToBrandMap
-
+  // now extract the dynamic value from the pathToBrandMap
   const dynamicPath = pathToBrandMap[location.pathname];
 
   const [showDropdown, setShowDropdown] = useState(false); // Provide an initial value
@@ -33,20 +33,42 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+      <Navbar
+        expand="md"
+        collapseOnSelect
+        style={{ borderRadius: "5px", background: "#224952" }}
+      >
         <Container>
-          <Navbar.Brand href="/">{dynamicPath}</Navbar.Brand>
+          <Navbar.Brand href="/" style={{ color: "white" }}>
+            {dynamicPath}
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav style={{ marginLeft: "90%" }}>
+              {userRole === "admin" && (
+                <Nav.Link href="/admin" style={{ color: "white" }}>
+                  Admin
+                </Nav.Link>
+              )}
+              {userRole === "accountant" && (
+                <Nav.Link href="/accountant" style={{ color: "white" }}>
+                  Accountant
+                </Nav.Link>
+              )}
+              {userRole === "students" && (
+                <Nav.Link href="/students" style={{ color: "white" }}>
+                  Students
+                </Nav.Link>
+              )}
+
               <NavDropdown
                 show={showDropdown}
                 onToggle={toggleDropdown}
-                title={<BsIcons.BsFillPersonFill />}
+                title={<BsIcons.BsFillPersonFill style={{ color: "white" }} />}
                 id="dropdown-menu"
               >
-                <NavDropdown.Item>Profile</NavDropdown.Item>
-                <NavDropdown.Item>Logout</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/Profile">Profile</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/Logout">Logout</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

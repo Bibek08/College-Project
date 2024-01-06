@@ -1,4 +1,4 @@
-import "../../App.css";
+import "./student.css";
 import { useEffect, useState } from "react";
 import { Button, Table, Form, Modal } from "react-bootstrap";
 import axios from "axios";
@@ -27,7 +27,7 @@ function Student() {
   const deleteStudent = (id) => {
     //eslint-disable-next-line
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this student?",
+      "Are you sure you want to delete this student?"
     );
     axios
       .delete(`/deleteStudent/${id}`)
@@ -75,25 +75,22 @@ function Student() {
           className="d-flex justify-content-end align-item-end"
           style={{ marginTop: "50px" }}
         >
-          <Button style={{ marginRight: "80px" }} onClick={() => goBack()}>
+          <Button style={{ marginRight: "20px" }} onClick={() => goBack()}>
             Add Student{" "}
           </Button>
         </div>
-        <Table style={{ marginTop: "10px", border: "1px solid black" }}>
-          <thead>
-            <tr
-              className="text-center"
-              style={{ backgroundColor: "blue", border: "1px solid black" }}
-            >
-              <th>Roll</th>
-              <th>Semester</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Guardian Name</th>
-              <th>Contact</th>
-              <th>Gender</th>
-              <th>Status</th>
-              <th>Actions</th>
+        <Table className="table">
+          <thead className="table-head"  >
+            <tr>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Roll</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Semester</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Name</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Email</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Guardian Name</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Contact</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Gender</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Status</th>
+              <th style={{backgroundColor:"#224952", color:"white"}}>Actions</th>
             </tr>
           </thead>
           <tbody>

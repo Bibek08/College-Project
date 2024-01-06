@@ -1,0 +1,32 @@
+.profile-img-container {
+  background-color: lightblue;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.profile-img {
+  width: 200px;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+.follow-btn {
+  background-color: blue;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 15px;
+  margin-right: 5px;
+}
+.message-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 15px;
+  margin-left: 5px;
+}
+.profile-details {
+  border-radius: 5px;
+  margin-left: 5px;
+  padding-left: 10px;
+  background-color: lightgrey;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}

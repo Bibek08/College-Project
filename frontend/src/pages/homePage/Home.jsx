@@ -1,5 +1,5 @@
 // import Topnav from "../../components/Topnav/Topnav";
-import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import { MdEmail, MdPhone, MdLocationOn, MdCopyright } from "react-icons/md";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import Bhuwan from "../../assets/Bhuwan.png";
 import Bibek from "../../assets/Bibek.png";
@@ -57,7 +57,9 @@ function Home() {
           <div className="col-md-6 home-paragraph-container">
             <div className="home-header">
               <h1>PayEase</h1>
-              <h5>hustle-free payments with PayEase</h5>
+              <h5>
+                <i>hustle-free payments with PayEase</i>
+              </h5>
             </div>
             <p className="home-paragraph">
               {" "}
@@ -101,13 +103,15 @@ function Home() {
                 <MdEmail /> Email :payeasea321@gmail.com
               </p>
               <p>
-                <MdPhone /> Phone : +977981517656
+                <MdPhone /> Phone : +9779815176536
               </p>
               <p>
                 <MdLocationOn /> Address : vyas-5
               </p>
               <div className="social-links">
-                <h5>Social---</h5>
+                <h5>
+                  <b>Social Media</b>
+                </h5>
                 <a href="https://www.facebook.com">
                   <FaFacebook className="social-icon" />
                 </a>
@@ -132,23 +136,27 @@ function Home() {
       <div className="members-container">
         <h3>Team Members</h3>
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-3 member">
             <img src={Bhuwan} alt="" className="Bhuwan" />
             <h5>Bhuwan Darai</h5>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 member">
             <img src={Bibek} alt="" className="Bibek" />
             <h5>Bibek Thapa</h5>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 member">
             <img src={Kumar} alt="" className="Kumar" />
             <h5>Kumar Thapa</h5>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 member">
             <img src={Yujin} alt="" className="Yujin" />
             <h5>Yujin Thapa</h5>
           </div>
-          <p id="copyright">All Right Reserve @PayEase2023</p>
+          <p id="copyright">
+            {" "}
+            <MdCopyright />
+            All Right Reserve @PayEase2023
+          </p>
         </div>
       </div>
     </div>

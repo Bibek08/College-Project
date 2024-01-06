@@ -17,6 +17,7 @@ import Statements from "./pages/statements/statements";
 import CreateFeeStructure from "./pages/createFeeStructure/createFeeStr";
 import StatementDetails from "./pages/statements/StatementDetails";
 import Invoice from "./pages/invoicePage/invoice";
+import Profile from "./pages/Profile/Profile";
 function App() {
   return (
     <Router>
@@ -119,6 +120,15 @@ function App() {
               <CreateFeeStructure />
             </Sidebar>
           }
+
+        />
+         <Route
+        path="/profile"
+        element={
+          <Sidebar>
+            <Profile/>
+          </Sidebar>
+        }
         />
       </Routes>
     </Router>

@@ -54,7 +54,7 @@ const TableComponent = () => {
       .then((res) => {
         console.log(res.data);
         setFeeStructure((prevFeeStructure) =>
-          prevFeeStructure.filter((fee) => fee._id !== feeStructureId),
+          prevFeeStructure.filter((fee) => fee._id !== feeStructureId)
         );
       })
       .catch((err) => console.log(err));
@@ -78,7 +78,7 @@ const TableComponent = () => {
         const { message, update } = response.data;
         console.log(message);
         setFeeStructure((prev) =>
-          prev.map((fee) => (fee._id === updatedFeeStr._id ? update : fee)),
+          prev.map((fee) => (fee._id === updatedFeeStr._id ? update : fee))
         );
         handleClose();
       })
@@ -94,7 +94,13 @@ const TableComponent = () => {
 
   return (
     <>
-      <Container fluid style={{ border: "1px solid black" }}>
+      <Container
+        fluid
+        style={{
+          marginTop: "10px",
+          boxShadow: " 0 2px 4px rgba(0, 0, 0, 0.5)",
+        }}
+      >
         <div style={{ textAlign: "center" }}>
           <h4>Aadikavi Bhanubhankta Campus </h4>
           <span>Estd.2004</span>
@@ -132,7 +138,7 @@ const TableComponent = () => {
         {feeStructure.length === 0 ? (
           <div>No fee structure available.</div>
         ) : (
-          <Table striped bordered hover>
+          <Table style={{ boxShadow: " 0 2px 4px rgba(0, 0, 0, 0.5)" }}>
             <thead>
               <tr>
                 <th>Particulars</th>
